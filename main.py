@@ -17,7 +17,7 @@ chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorsto
 
 
 # From here down is all the StreamLit UI.
-st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
+st.set_page_config(page_title="Kristian's Custom ChatGPT", page_icon=":robot:")
 st.header("Kristian's Custom ChatGPT")
 
 if "generated" not in st.session_state:
