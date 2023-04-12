@@ -37,7 +37,6 @@ if user_input:
     result = chain({"question": user_input})
     output = f"Answer: {result['answer']}\nSources: {result['sources']}"
 
-    st.clear_text_input(key="input")
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
 
