@@ -13,8 +13,7 @@ with open("faiss_store.pkl", "rb") as f:
     store = pickle.load(f)
 
 store.index = index
-chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorstore=store)
-
+chain = VectorDBQAWithSourcesChain.from_llm(llm=GPT4(temperature=0), vectorstore=store)
 
 # From here down is all the StreamLit UI.
 st.set_page_config(page_title="Kristian's Custom ChatGPT", page_icon=":robot:")
@@ -38,6 +37,7 @@ if user_input:
     result = chain({"question": user_input})
     output = f"Answer: {result['answer']}\nSources: {result['sources']}"
 
+    st.clear_text_input(key="input")
     st.session_state.past.append(user_input)
     st.session_state.generated.append(output)
 
